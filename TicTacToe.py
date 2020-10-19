@@ -28,7 +28,7 @@ def display_board(board):
     print('-----')
     print(board[7] +'|'+ board[8] +'|'+ board[9])
 
-board = ['#','X','O','X','O','X','O','X','O','X']
+board = ['#',' ',' ','X','O','X','O',' ','O','X']
 #display_board(board)
 
 
@@ -39,6 +39,7 @@ board = ['#','X','O','X','O','X','O','X','O','X']
 def place_marker(board, marker, position):
 
     board[position] = marker
+
 
 # place_marker(board, 'X', 1)
 # display_board(board)
@@ -75,8 +76,23 @@ def choose_first_player():
         print("Player 2 goes first.")
 
 
+#choose_first_player()
 
-choose_first_player()
+
+
+
+
+def space_check(board, position):
+    if board[position] == 'X' or board[position] == 'O':
+        return True
+    else:
+        return False
+
+
+#space_check(board, 3)
+
+
+
 
 
 
