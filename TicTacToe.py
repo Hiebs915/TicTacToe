@@ -96,6 +96,21 @@ def space_check(board, position):
 
 
 
+def full_board_check(board):
+    count = 0
+    for space in board:
+        if space == 'X' or space == 'O' in board:
+            count += 1
+            if count == 9:
+                return True
+            else:
+                return False
+
+
+full_board_check(board)
+
+
+
     # position = 'WRONG'
     # game_board_digits = range(0,10)
     # digit_choice = False
