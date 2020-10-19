@@ -44,22 +44,39 @@ def place_marker(board, marker, position):
 # display_board(board)
 
 
+
+
+
 def win_check(board, mark):
 # Checks for 3 aligned X's or O's
-    return ((board[1] == mark and board[2] == mark and board[3] == mark) or
-    (board[4] == mark and board[5] == mark and board[6] == mark) or
-    (board[7] == mark and board[8] == mark and board[9] == mark) or
-    (board[1] == mark and board[4] == mark and board[7] == mark) or
-    (board[2] == mark and board[5] == mark and board[8] == mark) or
-    (board[3] == mark and board[6] == mark and board[9] == mark) or
-    (board[1] == mark and board[5] == mark and board[9] == mark) or
-    (board[3] == mark and board[5] == mark and board[7] == mark))
+    return ((board[1] == mark and board[2] == mark and board[3] == mark) or # Row 1
+    (board[4] == mark and board[5] == mark and board[6] == mark) or # Row 2
+    (board[7] == mark and board[8] == mark and board[9] == mark) or # Row 3
+    (board[1] == mark and board[4] == mark and board[7] == mark) or # Column 1
+    (board[2] == mark and board[5] == mark and board[8] == mark) or # Column 2
+    (board[3] == mark and board[6] == mark and board[9] == mark) or # Column 3
+    (board[1] == mark and board[5] == mark and board[9] == mark) or # Diagonal
+    (board[3] == mark and board[5] == mark and board[7] == mark)) # Diagonal
 
 
-display_board(board)
-win_check(board, 'X')
+#display_board(board)
+#win_check(board, 'X')
 
 
+
+
+
+
+def choose_first_player():
+    import random
+    if (random.randint(1,2)) == 1:
+        print("Player 1 goes first.")
+    else:
+        print("Player 2 goes first.")
+
+
+
+choose_first_player()
 
 
 
