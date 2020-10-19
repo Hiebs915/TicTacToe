@@ -1,3 +1,4 @@
+#Asks player 1 if he/she wants to be X's or O's.
 def player_input():
 
     marker = ''
@@ -20,7 +21,7 @@ def player_input():
 
 
 
-
+#Display board.
 def display_board(board):
     print(board[1] +'|'+ board[2] +'|'+ board[3])
     print('-----')
@@ -35,7 +36,7 @@ board = ['#',' ',' ','X','O','X','O',' ','O','X']
 
 
 
-
+#Has you enter a marker and the position you want to place it on the board.
 def place_marker(board, marker, position):
 
     board[position] = marker
@@ -47,7 +48,7 @@ def place_marker(board, marker, position):
 
 
 
-
+#Checks if X's or O's won.
 def win_check(board, mark):
 # Checks for 3 aligned X's or O's
     return ((board[1] == mark and board[2] == mark and board[3] == mark) or # Row 1
@@ -67,7 +68,7 @@ def win_check(board, mark):
 
 
 
-
+#Randomly chooses which player goes first.
 def choose_first_player():
     import random
     if (random.randint(1,2)) == 1:
@@ -81,7 +82,7 @@ def choose_first_player():
 
 
 
-
+#Checks if a specific position contains an X or O.
 def space_check(board, position):
     if board[position] == 'X' or board[position] == 'O':
         return True
@@ -95,7 +96,7 @@ def space_check(board, position):
 
 
 
-
+#Checks if the tictactoe board is full of X's or O's
 def full_board_check(board):
     count = 0
     for space in board:
@@ -107,7 +108,19 @@ def full_board_check(board):
                 return False
 
 
-full_board_check(board)
+#full_board_check(board)
+
+
+
+
+
+# Asks the player if they want to play again.
+def replay():
+    input("Do you want to play again?  Please enter Yes or No")
+    if input() == 'Yes':
+        return True
+    else:
+        return False
 
 
 
