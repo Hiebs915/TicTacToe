@@ -96,10 +96,8 @@ def win_check(board, mark):
 
 #Checks if a specific position contains an X or O.
 def space_check(board, position):
-    if board[position] == 'X' or board[position] == 'O':
-        return True
-    else:
-        return False
+
+    return board[position] == ' '
 
 
 #space_check(board, 3)
