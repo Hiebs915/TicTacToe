@@ -1,3 +1,20 @@
+#Function below displays board.
+board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+def display_board(board):
+    print(board[1] +'|'+ board[2] +'|'+ board[3])
+    print('-----')
+    print(board[4] +'|'+ board[5] +'|'+ board[6])
+    print('-----')
+    print(board[7] +'|'+ board[8] +'|'+ board[9])
+
+
+#display_board(board)
+
+
+
+
+
+
 #Asks player 1 if he/she wants to be X's or O's.
 def player_input():
 
@@ -12,25 +29,15 @@ def player_input():
         player2 = 'O'
     else:
         player2 = 'X'
+        player1 = 'O'
 
+    print("\nPlayer 1 is: " + player1)
+    print("Player 2 is: " + player2)
     return(player1,player2)
 
-# This assigns player1_marker to whatever player1 enters as the input and assigns player2_marker to whichever marker play 1 didn't pick.
+# This assigns player1_marker to whatever player 1 enters as the input and assigns player2_marker to whichever marker player 1 didn't pick.
 # player1_marker, player2_marker = player_input()
 
-
-
-
-#Display board.
-def display_board(board):
-    print(board[1] +'|'+ board[2] +'|'+ board[3])
-    print('-----')
-    print(board[4] +'|'+ board[5] +'|'+ board[6])
-    print('-----')
-    print(board[7] +'|'+ board[8] +'|'+ board[9])
-
-board = ['#',' ',' ','X','O','X','O',' ','O','X']
-#display_board(board)
 
 
 
@@ -61,7 +68,7 @@ def win_check(board, mark):
     (board[3] == mark and board[5] == mark and board[7] == mark)) # Diagonal
 
 
-#win_check(board, 'X')
+#win_check(board, mark)
 
 
 
@@ -71,9 +78,11 @@ def win_check(board, mark):
 def choose_first_player():
     import random
     if (random.randint(1,2)) == 1:
-        print("Player 1 goes first.")
+        print("\nPlayer 1 goes first.")
+
     else:
-        print("Player 2 goes first.")
+        print("\nPlayer 2 goes first.")
+
 
 
 #choose_first_player()
@@ -95,13 +104,14 @@ def space_check(board, position):
 
 
 
-#Checks if the tictactoe board is full of X's or O's
+#Checks if the tictactoe board is full of X's or O's.  If its full and nobody has won its a tie.
 def full_board_check(board):
     count = 0
     for space in board:
         if space == 'X' or space == 'O' in board:
             count += 1
             if count == 9:
+                print("Its a tie!")
                 return True
             else:
                 return False
@@ -121,7 +131,47 @@ def replay():
         return False
 
 
+#replay()
+
+
+
+
+print('Welcome to Tic Tac Toe!')
+
+while True:
+    display_board(board)
+
+    player1_marker, player2_marker = player_input()
+
+    choose_first_player()
+
+    place_marker(board, marker, int(input("Please enter the position you want to place your marker in: ")))
+
+    display_board(board)
+
+    full_board_check(board)
+
+    win_check(board, 'X')
+        #pass
+
+        #while game_on:
+            #Player 1 Turn
+
+
+            # Player2's turn.
+
+                #pass
+
+        #if not replay():
+            #break
 replay()
+
+
+
+
+
+
+
 
 
 # position = 'WRONG'
