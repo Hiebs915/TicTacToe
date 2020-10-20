@@ -15,46 +15,35 @@ def display_board(board):
 
 
 #Randomly chooses which player goes first.
-def choose_first_player():
-    import random
-    first_player = (str(random.randint(1,2)))
+import random
 
-    if first_player == '1':
-        print("\nPlayer " +first_player+ " goes first.")
-    if first_player == '2':
-        print("\nPlayer " +first_player+ " goes first.")
-
-    return first_player
+def choose_first():
+    if random.randint(0, 1) == 0:
+        return 'Player 2'
+    else:
+        return 'Player 1'
 
 
-#first_player = choose_first_player()
+#choose_first()
 
 
 
 
 
 #Asks first_player if they want to be X's or O's.
-def player_input(first_player):
-
+def player_input():
     marker = ''
 
-    while marker != 'X' and marker != 'O':
-        marker = input("\nPlayer " +first_player+ " , do you want to be X's or O's?  Please enter X or O: ").upper()
+    while not (marker == 'X' or marker == 'O'):
+        marker = input('Player 1: Do you want to be X or O? ').upper()
 
-    player1 = marker
-
-    if player1 == 'X':
-        player2 = 'O'
+    if marker == 'X':
+        return ('X', 'O')
     else:
-        player2 = 'X'
-        player1 = 'O'
-
-    print("\nPlayer 1 is: " + player1)
-    print("Player 2 is: " + player2)
-    return(player1,player2)
+        return ('O', 'X')
 
 
-#player_input(first_player)
+#player_input()
 
 
 
@@ -120,6 +109,24 @@ def full_board_check(board):
 
 
 
+
+def player_choice(board):
+    position = 0
+
+    while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
+        position = int(input('Choose your next position: (1-9) '))
+
+    return position
+
+
+#player_choice(board)
+
+
+
+
+
+
+
 # Asks the player if they want to play again.
 def replay():
     if input("Do you want to play again?  Please enter Yes or No: ") == 'Yes':
@@ -147,66 +154,57 @@ def replay():
 print('Welcome to Tic Tac Toe!')
 
 while True:
-    display_board(board) #Displays the board.
+    # Reset the board each time this loop is started.
+    theBoard = [' '] * 10
+    player1_marker, player2_marker = player_input()
+    turn = choose_first()
+    print(turn + ' will go first.')
 
-    first_player = choose_first_player() #Chooses the first player (player1 or player2).
+    play_game = input('Are you ready to play? Enter Yes or No')
 
-    player_input(first_player) #Asks the first_player if they want to be X's or O's and assigns X or O accordingly.
+    if play_game.lower()[0] == 'y':
+        game_on = True
+    else:
+        game_on = False
 
-    place_marker(board, input("Player " +first_player+ " Enter your marker (X or O)", int(input("\nPlayer " +first_player+ " Please enter the position you want to place your marker in: "))) # Asks the player to enter the position they would like to place their marker.
+        while game_on == True:
+            if turn == 'Player 1':
+                # Player1's turn.
 
-    display_board(board)
+                display_board(theBoard)
+                position = player_choice(theBoard)
+                place_marker(theBoard, player1_marker, position)
 
-    full_board_check(board)
+                if win_check(theBoard, player1_marker):
+                    display_board(theBoard)
+                    print('Congratulations! You have won the game!')
+                    game_on = False
+                else:
+                    if full_board_check(theBoard):
+                        display_board(theBoard)
+                        print('The game is a draw!')
+                        break
+                    else:
+                        turn = 'Player 2'
 
-    win_check(board, 'X')
-        #pass
-
-        #while game_on:
-            #Player 1 Turn
-
-
+        else:
             # Player2's turn.
+            display_board(theBoard)
+            position = player_choice(theBoard)
+            place_marker(theBoard, player2_marker, position)
 
-                #pass
+            if win_check(theBoard, player2_marker):
+                display_board(theBoard)
+                print('Player 2 has won!')
+                game_on = False
+            else:
+                if full_board_check(theBoard):
+                    display_board(theBoard)
+                    print('The game is a draw!')
+                    break
+                else:
+                    turn = 'Player 1'
 
-        #if not replay():
-            #break
-replay()
-
-
-
-
-
-
-
-
-
-# position = 'WRONG'
-# game_board_digits = range(0,10)
-# digit_choice = False
-
-# # Board position input check.
-# while position.isdigit() == False or digit_choice == False:
-#     position = input("\nPlease enter the positon you would like to place your marker on the board.  Please remember to enter a digit between 1-9':" )
-
-#     # Two conditions to check: 1.) Is the input a digit? 2.) Is the input an acceptable digit(1 or 2)?
-#     # Digit Check
-#     if position.isdigit() == False:
-#         print("Sorry, that is not a digit")
-
-#     # Acceptable Digit Check
-#     if position.isdigit() == True:
-#         if int(position) in game_board_digits:
-#             digit_choice = True
-
-#         else:
-#             print("Sorry, you did not enter a digit between 1-9")
-#             digit_choice = False
-
-
-
-
-
-
+    if not replay():
+        break
 
