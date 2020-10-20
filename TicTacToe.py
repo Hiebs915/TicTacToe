@@ -14,14 +14,32 @@ def display_board(board):
 
 
 
+#Randomly chooses which player goes first.
+def choose_first_player():
+    import random
+    first_player = (str(random.randint(1,2)))
 
-#Asks player 1 if he/she wants to be X's or O's.
-def player_input():
+    if first_player == '1':
+        print("\nPlayer " +first_player+ " goes first.")
+    if first_player == '2':
+        print("\nPlayer " +first_player+ " goes first.")
+
+    return first_player
+
+
+#first_player = choose_first_player()
+
+
+
+
+
+#Asks first_player if they want to be X's or O's.
+def player_input(first_player):
 
     marker = ''
 
     while marker != 'X' and marker != 'O':
-        marker = input("\nPlayer 1, do you want to be X's or O's?  Please enter X or O: ").upper()
+        marker = input("\nPlayer " +first_player+ " , do you want to be X's or O's?  Please enter X or O: ").upper()
 
     player1 = marker
 
@@ -35,8 +53,9 @@ def player_input():
     print("Player 2 is: " + player2)
     return(player1,player2)
 
-# This assigns player1_marker to whatever player 1 enters as the input and assigns player2_marker to whichever marker player 1 didn't pick.
-# player1_marker, player2_marker = player_input()
+
+#player_input(first_player)
+
 
 
 
@@ -74,21 +93,6 @@ def win_check(board, mark):
 
 
 
-#Randomly chooses which player goes first.
-def choose_first_player():
-    import random
-    if (random.randint(1,2)) == 1:
-        print("\nPlayer 1 goes first.")
-
-    else:
-        print("\nPlayer 2 goes first.")
-
-
-
-#choose_first_player()
-
-
-
 
 #Checks if a specific position contains an X or O.
 def space_check(board, position):
@@ -106,15 +110,10 @@ def space_check(board, position):
 
 #Checks if the tictactoe board is full of X's or O's.  If its full and nobody has won its a tie.
 def full_board_check(board):
-    count = 0
-    for space in board:
-        if space == 'X' or space == 'O' in board:
-            count += 1
-            if count == 9:
-                print("Its a tie!")
-                return True
-            else:
-                return False
+    for i in range(1,10):
+        if space_check(board, i):
+            return False
+    return True
 
 
 #full_board_check(board)
@@ -136,16 +135,27 @@ def replay():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 print('Welcome to Tic Tac Toe!')
 
 while True:
-    display_board(board)
+    display_board(board) #Displays the board.
 
-    player1_marker, player2_marker = player_input()
+    first_player = choose_first_player() #Chooses the first player (player1 or player2).
 
-    choose_first_player()
+    player_input(first_player) #Asks the first_player if they want to be X's or O's and assigns X or O accordingly.
 
-    place_marker(board, marker, int(input("Please enter the position you want to place your marker in: ")))
+    place_marker(board, input("Player " +first_player+ " Enter your marker (X or O)", int(input("\nPlayer " +first_player+ " Please enter the position you want to place your marker in: "))) # Asks the player to enter the position they would like to place their marker.
 
     display_board(board)
 
