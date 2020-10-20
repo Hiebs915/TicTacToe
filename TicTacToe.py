@@ -43,7 +43,7 @@ def place_marker(board, marker, position):
 
 
 # place_marker(board, 'X', 1)
-# display_board(board)
+
 
 
 
@@ -61,7 +61,6 @@ def win_check(board, mark):
     (board[3] == mark and board[5] == mark and board[7] == mark)) # Diagonal
 
 
-#display_board(board)
 #win_check(board, 'X')
 
 
@@ -116,35 +115,36 @@ def full_board_check(board):
 
 # Asks the player if they want to play again.
 def replay():
-    input("Do you want to play again?  Please enter Yes or No")
-    if input() == 'Yes':
+    if input("Do you want to play again?  Please enter Yes or No: ") == 'Yes':
         return True
     else:
         return False
 
 
+replay()
 
-    # position = 'WRONG'
-    # game_board_digits = range(0,10)
-    # digit_choice = False
 
-    # # Board position input check.
-    # while position.isdigit() == False or digit_choice == False:
-    #     position = input("\nPlease enter the positon you would like to place your marker on the board.  Please remember to enter a digit between 1-9':" )
+# position = 'WRONG'
+# game_board_digits = range(0,10)
+# digit_choice = False
 
-    #     # Two conditions to check: 1.) Is the input a digit? 2.) Is the input an acceptable digit(1 or 2)?
-    #     # Digit Check
-    #     if position.isdigit() == False:
-    #         print("Sorry, that is not a digit")
+# # Board position input check.
+# while position.isdigit() == False or digit_choice == False:
+#     position = input("\nPlease enter the positon you would like to place your marker on the board.  Please remember to enter a digit between 1-9':" )
 
-    #     # Acceptable Digit Check
-    #     if position.isdigit() == True:
-    #         if int(position) in game_board_digits:
-    #             digit_choice = True
+#     # Two conditions to check: 1.) Is the input a digit? 2.) Is the input an acceptable digit(1 or 2)?
+#     # Digit Check
+#     if position.isdigit() == False:
+#         print("Sorry, that is not a digit")
 
-    #         else:
-    #             print("Sorry, you did not enter a digit between 1-9")
-    #             digit_choice = False
+#     # Acceptable Digit Check
+#     if position.isdigit() == True:
+#         if int(position) in game_board_digits:
+#             digit_choice = True
+
+#         else:
+#             print("Sorry, you did not enter a digit between 1-9")
+#             digit_choice = False
 
 
 
