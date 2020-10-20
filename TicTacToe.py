@@ -1,3 +1,6 @@
+#---------------------------TicTacToe Functions-------------------------------#
+
+
 #Function below displays board.
 board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 def display_board(board):
