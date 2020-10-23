@@ -73,7 +73,7 @@ def full_board_check(board):
     return True
 
 
-
+# Asks the player to choose a position on the board.
 def player_choice(board):
     position = 0
 
