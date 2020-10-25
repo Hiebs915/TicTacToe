@@ -2,7 +2,6 @@
 
 
 #Function below displays board.
-board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
 def display_board(board):
     print(board[1] +'|'+ board[2] +'|'+ board[3])
     print('-----')
@@ -86,7 +85,7 @@ def player_choice(board):
 
 # Asks the player if they want to play again.
 def replay():
-    print('\n' * 10)
+    print('\n' * 5)
     if input("Do you want to play again?  Please enter Yes or No: ") == 'Yes':
         return True
     else:
