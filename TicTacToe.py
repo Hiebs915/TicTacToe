@@ -1,6 +1,5 @@
 #---------------------------TicTacToe Functions-------------------------------#
 
-
 #Function below displays board.
 def display_board(board):
     print(board[1] +'|'+ board[2] +'|'+ board[3])
@@ -153,7 +152,6 @@ while True:
 
     if not replay():
         break
-
 
 
 #-----------------------------Game Ends Here----------------------------------#
